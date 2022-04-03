@@ -93,8 +93,115 @@ class SignInScreen extends StatelessWidget {
       );
     }
 
+    // Widget Password Input
+    Widget passwordInput() {
+      return Container(
+        margin: EdgeInsets.only(top: 20),
+        child: Column(
+          // Untuk membuat Text Rata Kiri
+          crossAxisAlignment: CrossAxisAlignment.start,
+
+          children: [
+            Text(
+              'Password',
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
+              ),
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              height: 50,
+              padding: EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              decoration: BoxDecoration(
+                color: backgroundColor2,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Center(
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icon_password.png',
+                      width: 20,
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        obscureText: true,
+                        style: primaryTextStyle,
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Your Password',
+                          hintStyle: subtitleTextStyle,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    // Widget Sign In Button
+    Widget signInButton() {
+      return Container(
+        height: 50,
+        width: double.infinity,
+        margin: EdgeInsets.only(top: 30),
+        child: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+              backgroundColor: primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              )),
+          child: Text(
+            'Sign In',
+            style: primaryTextStyle.copyWith(
+              fontSize: 16,
+              fontWeight: medium,
+            ),
+          ),
+        ),
+      );
+    }
+
+    // Widget Footer
+    Widget footer() {
+      return Container(
+        margin: EdgeInsets.only(bottom: 30),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Don\'t have an account? ',
+              style: subtitleTextStyle.copyWith(
+                fontSize: 12,
+              ),
+            ),
+            Text(
+              'Sign Up',
+              style: purpleTextStyle.copyWith(
+                fontSize: 12,
+                fontWeight: medium,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor1,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.symmetric(
@@ -107,6 +214,10 @@ class SignInScreen extends StatelessWidget {
             children: [
               header(),
               emailInput(),
+              passwordInput(),
+              signInButton(),
+              Spacer(),
+              footer(),
             ],
           ),
         ),
